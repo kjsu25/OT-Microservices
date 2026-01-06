@@ -11,6 +11,8 @@ USER root
 RUN apk update && \
     apk add openjdk17
 
+RUN java -version && mvn -version
+
 COPY --from=builder /java/target/salary-0.3.0-RELEASE.jar /app/salary.jar
 COPY ./config.yaml /root/config/config.yaml
 ENV CONFIG_FILE "/root/config/config.yaml"

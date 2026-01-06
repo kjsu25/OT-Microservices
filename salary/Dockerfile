@@ -1,9 +1,9 @@
-FROM maven:latest as builder
+FROM maven:3.8.6-openjdk-11 as builder
 MAINTAINER Opstree Solutions
 WORKDIR /java/
 COPY pom.xml /java/
 COPY src /java/src/
-RUN mvn clean package
+RUN mvn clean package -DskipTests
 
 FROM alpine:latest
 MAINTAINER Opstree Solutions
